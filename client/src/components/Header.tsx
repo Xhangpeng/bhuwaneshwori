@@ -73,11 +73,11 @@ export default function Header() {
           : "bg-white py-3"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 lg:gap-8">
         {/* Brand */}
         <Link
           href="/"
-          className="flex items-center gap-3 group navbar-brand-hover no-underline shrink-0"
+          className="flex items-center gap-3 group navbar-brand-hover no-underline min-w-0 flex-1 sm:flex-none"
         >
           <span className="logo-container">
             <span className="logo-bg-ring" />
@@ -97,21 +97,21 @@ export default function Header() {
               {t("Secondary School")}
             </span>
           </div>
-          <div className="sm:hidden flex flex-col leading-tight">
+          <div className="sm:hidden flex min-w-0 max-w-[calc(100vw-132px)] flex-col leading-tight">
             <span
-              className="font-extrabold text-[var(--color-navy)] text-[13px] tracking-wide"
+              className="truncate font-extrabold text-[var(--color-navy)] text-[13px] tracking-wide"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {t("BHUWANESHWORI")}
             </span>
-            <span className="text-[8px] font-bold tracking-[0.12em] text-[var(--color-gold)] uppercase mt-0.5">
+            <span className="truncate text-[8px] font-bold tracking-[0.12em] text-[var(--color-gold)] uppercase mt-0.5">
               {t("Secondary School")}
             </span>
           </div>
         </Link>
 
         {/* Right side: Desktop nav + CTA */}
-        <div className="hidden lg:flex items-center gap-5 shrink-0">
+        <div className="hidden xl:flex items-center gap-5 shrink-0">
           <nav className="flex items-center gap-1">
             {NAV_ITEMS.map((item) => (
               <Link
@@ -134,7 +134,7 @@ export default function Header() {
         <button
           onClick={() => setOpen(true)}
           aria-label={t("Open navigation")}
-          className="lg:hidden inline-flex h-10 w-11 items-center justify-center rounded-xl text-[var(--color-navy)] border border-slate-200/90 bg-white hover:bg-slate-50 hover:border-slate-300 shadow-sm hover:shadow-md transition shrink-0"
+          className="xl:hidden inline-flex h-10 w-11 items-center justify-center rounded-xl text-[var(--color-navy)] border border-slate-200/90 bg-white hover:bg-slate-50 hover:border-slate-300 shadow-sm hover:shadow-md transition shrink-0"
         >
           <Menu className="h-5.5 w-5.5" />
         </button>
