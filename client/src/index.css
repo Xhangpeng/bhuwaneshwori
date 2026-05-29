@@ -17,6 +17,7 @@
   --font-quote: "Lora", Georgia, "Times New Roman", serif;
   --font-body: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-nepali: "Noto Sans Devanagari", "Nirmala UI", "Mangal", system-ui, sans-serif;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
@@ -153,6 +154,43 @@
     line-height: 1.6;
     overflow-x: hidden;
     @apply bg-background text-foreground;
+  }
+  html[lang="ne"] body,
+  html[lang="ne"] button,
+  html[lang="ne"] input,
+  html[lang="ne"] textarea,
+  html[lang="ne"] select,
+  html[lang="ne"] h1,
+  html[lang="ne"] h2,
+  html[lang="ne"] h3,
+  html[lang="ne"] h4,
+  html[lang="ne"] h5,
+  html[lang="ne"] h6,
+  html[lang="ne"] .font-display,
+  html[lang="ne"] .font-sans,
+  html[lang="ne"] .section-heading,
+  html[lang="ne"] .section-title,
+  html[lang="ne"] .section-lead,
+  html[lang="ne"] .eyebrow-pill,
+  html[lang="ne"] .eyebrow-left,
+  html[lang="ne"] .nav-link,
+  html[lang="ne"] .subtab,
+  html[lang="ne"] .btn-cta,
+  html[lang="ne"] .btn-gold,
+  html[lang="ne"] .btn-ghost {
+    font-family: var(--font-nepali);
+    letter-spacing: 0;
+  }
+  html[lang="ne"] [style*="--font-display"] {
+    font-family: var(--font-nepali) !important;
+    letter-spacing: 0 !important;
+  }
+  html[lang="ne"] .eyebrow-pill,
+  html[lang="ne"] .eyebrow-left,
+  html[lang="ne"] .subtab,
+  html[lang="ne"] .notice-tag,
+  html[lang="ne"] .d-month {
+    text-transform: none;
   }
   .route-progress {
     position: fixed;
@@ -422,6 +460,37 @@
   .nav-link[data-active="true"] {
     color: var(--color-navy);
     background: rgba(10, 59, 117, 0.06);
+  }
+
+  .language-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 39px;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(10, 59, 117, 0.14);
+    background: linear-gradient(135deg, rgba(10, 59, 117, 0.06), rgba(197, 155, 39, 0.10));
+    color: var(--color-navy);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 800;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  }
+  .language-toggle:hover {
+    transform: translateY(-1px);
+    border-color: rgba(197, 155, 39, 0.36);
+    box-shadow: 0 12px 24px -20px rgba(10, 59, 117, 0.45);
+  }
+  .language-toggle:active {
+    transform: scale(0.98);
+  }
+  .language-toggle-compact {
+    min-height: 42px;
+    border-radius: 14px;
+    background: rgba(10, 59, 117, 0.05);
   }
 
   /* ===== CTA BUTTON ===== */

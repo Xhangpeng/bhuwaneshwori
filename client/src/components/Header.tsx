@@ -22,6 +22,8 @@ import {
 } from "lucide-react";
 import { SCHOOL, NAV_ITEMS } from "@/const";
 import { usePWAInstall } from "@/hooks/usePWAInstall";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageToggle from "./LanguageToggle";
 
 const iconMap: Record<string, React.ReactNode> = {
   Home: <Home className="h-5 w-5" />,
@@ -37,6 +39,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { canInstall, isInstalled, promptInstall } = usePWAInstall();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -63,6 +66,7 @@ export default function Header() {
 
   return (
     <header
+      data-no-translate
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
           ? "bg-white/96 backdrop-blur-md shadow-[0_4px_30px_rgba(7,28,56,0.08)] py-2"
@@ -87,10 +91,10 @@ export default function Header() {
               className="font-display font-extrabold tracking-wide text-[var(--color-navy)] text-[18px] lg:text-[22px]"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              BHUWANESHWORI
+              {t("BHUWANESHWORI")}
             </span>
             <span className="text-[10.5px] lg:text-[11.5px] font-bold tracking-[0.18em] text-[var(--color-gold)] uppercase">
-              Secondary School
+              {t("Secondary School")}
             </span>
           </div>
           <div className="sm:hidden flex flex-col leading-tight">
@@ -98,16 +102,16 @@ export default function Header() {
               className="font-extrabold text-[var(--color-navy)] text-[13px] tracking-wide"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              BHUWANESHWORI
+              {t("BHUWANESHWORI")}
             </span>
             <span className="text-[8px] font-bold tracking-[0.12em] text-[var(--color-gold)] uppercase mt-0.5">
-              Secondary School
+              {t("Secondary School")}
             </span>
           </div>
         </Link>
 
         {/* Right side: Desktop nav + CTA */}
-        <div className="hidden lg:flex items-center gap-8 shrink-0">
+        <div className="hidden lg:flex items-center gap-5 shrink-0">
           <nav className="flex items-center gap-1">
             {NAV_ITEMS.map((item) => (
               <Link
@@ -116,19 +120,20 @@ export default function Header() {
                 className="nav-link"
                 data-active={isActive(item.href) ? "true" : "false"}
               >
-                {item.label}
+                {t(item.label)}
               </Link>
             ))}
           </nav>
+          <LanguageToggle />
           <Link href="/apply" className="btn-cta no-underline">
-            Apply Now <ArrowRight className="h-4 w-4" />
+            {t("Apply Now")} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(true)}
-          aria-label="Open navigation"
+          aria-label={t("Open navigation")}
           className="lg:hidden inline-flex h-10 w-11 items-center justify-center rounded-xl text-[var(--color-navy)] border border-slate-200/90 bg-white hover:bg-slate-50 hover:border-slate-300 shadow-sm hover:shadow-md transition shrink-0"
         >
           <Menu className="h-5.5 w-5.5" />
@@ -154,16 +159,16 @@ export default function Header() {
             </span>
             <div className="leading-tight">
               <div className="font-extrabold text-[14px] text-white" style={{ fontFamily: "var(--font-display)" }}>
-                BHUWANESHWORI
+                {t("BHUWANESHWORI")}
               </div>
               <div className="text-[8px] font-bold tracking-widest uppercase text-white/80">
-                Secondary School
+                {t("Secondary School")}
               </div>
             </div>
           </div>
           <button
             onClick={() => setOpen(false)}
-            aria-label="Close navigation"
+            aria-label={t("Close navigation")}
             className="sidebar-close-btn"
           >
             <X className="h-5 w-5" />
@@ -187,16 +192,17 @@ export default function Header() {
                     <span className="sidebar-nav-icon">
                       {iconMap[item.icon] || <Home className="h-5 w-5" />}
                     </span>
-                    {item.label}
+                    {t(item.label)}
                   </Link>
                 </li>
               ))}
             </ul>
 
             <div className="mobile-sidebar-actions">
+              <LanguageToggle compact className="w-full justify-center" />
               {isInstalled ? (
                 <div className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-emerald-50/60 text-emerald-700 border border-emerald-100/60 text-[11px] font-bold">
-                  <Check className="h-3.5 w-3.5" /> App Installed
+                  <Check className="h-3.5 w-3.5" /> {t("App Installed")}
                 </div>
               ) : canInstall ? (
                 <button
@@ -206,11 +212,11 @@ export default function Header() {
                   }}
                   className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-white text-[11px] font-bold hover:from-amber-600 hover:to-amber-700 shadow-sm active:scale-[0.98] transition-all duration-200"
                 >
-                  <Download className="h-3.5 w-3.5" /> Download School App
+                  <Download className="h-3.5 w-3.5" /> {t("Download School App")}
                 </button>
               ) : null}
               <button onClick={handleApplyClick} className="btn-cta w-full justify-center py-2.5 text-[11px]">
-                Apply Now <ArrowRight className="h-4 w-4" />
+                {t("Apply Now")} <ArrowRight className="h-4 w-4" />
               </button>
             </div>
           </div>

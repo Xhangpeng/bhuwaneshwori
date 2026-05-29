@@ -5,6 +5,7 @@ import { Route, Switch, useLocation } from "wouter";
 import { useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Layout from "./components/Layout";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -45,21 +46,23 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
-        <TooltipProvider>
-          <Toaster
-            position="bottom-right"
-            toastOptions={{
-              style: {
-                background: "var(--color-cream)",
-                color: "var(--color-navy)",
-                border: "1px solid var(--color-border)",
-                borderRadius: "2px",
-                fontFamily: "var(--font-serif)",
-              },
-            }}
-          />
-          <Router />
-        </TooltipProvider>
+        <LanguageProvider>
+          <TooltipProvider>
+            <Toaster
+              position="bottom-right"
+              toastOptions={{
+                style: {
+                  background: "var(--color-cream)",
+                  color: "var(--color-navy)",
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "2px",
+                  fontFamily: "var(--font-serif)",
+                },
+              }}
+            />
+            <Router />
+          </TooltipProvider>
+        </LanguageProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );

@@ -5,17 +5,20 @@ import { Link } from "wouter";
 import { toast } from "sonner";
 import { Mail, MapPin, Phone, Facebook } from "lucide-react";
 import { NAV_ITEMS, SCHOOL } from "@/const";
+import { useLanguage } from "@/contexts/LanguageContext";
 import InstallAppButton from "./InstallAppButton";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   const onSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Subscribed — thank you for joining our newsletter.");
+    toast.success(t("Subscribed — thank you for joining our newsletter."));
     (e.currentTarget as HTMLFormElement).reset();
   };
 
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" data-no-translate>
       <div className="container relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-4">
           {/* Brand */}
@@ -27,17 +30,15 @@ export default function Footer() {
               </span>
               <div>
                 <div className="font-display font-extrabold text-white text-lg leading-tight" style={{ fontFamily: "var(--font-display)" }}>
-                  BHUWANESHWORI
+                  {t("BHUWANESHWORI")}
                 </div>
                 <div className="text-[10px] uppercase tracking-[0.22em] text-[var(--color-gold-soft)] font-bold">
-                  Secondary School · Estd. 2036 BS
+                  {t("Secondary School · Estd. 2036 BS")}
                 </div>
               </div>
             </div>
             <p className="text-sm leading-relaxed text-white/75 max-w-md mb-6">
-              A community-rooted secondary school in Shishaiya, Bedkot — delivering
-              quality education within a safe, supportive, and inspiring environment
-              that nurtures curiosity, character, and lifelong learning.
+              {t("A community-rooted secondary school in Shishaiya, Bedkot — delivering quality education within a safe, supportive, and inspiring environment that nurtures curiosity, character, and lifelong learning.")}
             </p>
 
             {/* Install PWA App Button */}
@@ -47,7 +48,7 @@ export default function Footer() {
 
             <div>
               <div className="text-[10px] uppercase tracking-[0.22em] text-white/60 font-bold mb-2">
-                Connect with us
+                {t("Connect with us")}
               </div>
               <div className="flex gap-2">
                 <a
@@ -65,11 +66,11 @@ export default function Footer() {
 
           {/* Explore */}
           <div className="lg:col-span-2">
-            <h4>Explore</h4>
+            <h4>{t("Explore")}</h4>
             <ul>
               {NAV_ITEMS.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href}>{item.label}</Link>
+                  <Link href={item.href}>{t(item.label)}</Link>
                 </li>
               ))}
             </ul>
@@ -77,14 +78,14 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="lg:col-span-3">
-            <h4>Contact</h4>
+            <h4>{t("Contact")}</h4>
             <ul>
               <li className="flex items-start gap-2.5 text-white/80">
                 <MapPin className="h-4 w-4 mt-0.5 text-[var(--color-gold-soft)] shrink-0" />
                 <span>
-                  {SCHOOL.location}
+                  {t(SCHOOL.location)}
                   <br />
-                  {SCHOOL.district}
+                  {t(SCHOOL.district)}
                 </span>
               </li>
               <li className="flex items-center gap-2.5 text-white/80">
@@ -102,15 +103,15 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div className="lg:col-span-3">
-            <h4>Newsletter</h4>
+            <h4>{t("Newsletter")}</h4>
             <p className="text-sm text-white/75 leading-relaxed mb-3">
-              Subscribe for school notices, exam routines, and event updates.
+              {t("Subscribe for school notices, exam routines, and event updates.")}
             </p>
             <form onSubmit={onSubscribe} className="flex flex-col sm:flex-row gap-2">
               <input
                 type="email"
                 required
-                placeholder="Your email"
+                placeholder={t("Your email")}
                 className="flex-1 bg-white/10 text-white placeholder-white/50 border border-white/20 rounded-full px-4 py-2.5 text-sm focus:outline-none focus:border-[var(--color-gold-soft)] focus:bg-white/15 transition"
                 style={{ fontFamily: "var(--font-sans)" }}
               />
@@ -123,16 +124,16 @@ export default function Footer() {
                   letterSpacing: "0.12em",
                 }}
               >
-                Join
+                {t("Join")}
               </button>
             </form>
           </div>
         </div>
 
         <div className="footer-bottom flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
-          <span>© {new Date().getFullYear()} Shree Bhuwaneshwori Secondary School. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} {t("Shree Bhuwaneshwori Secondary School")}. {t("All rights reserved.")}</span>
           <span className="uppercase tracking-[0.22em] text-[var(--color-gold-soft)] text-[11px] font-bold">
-            Discipline · Knowledge · Service
+            {t("Discipline · Knowledge · Service")}
           </span>
         </div>
       </div>
