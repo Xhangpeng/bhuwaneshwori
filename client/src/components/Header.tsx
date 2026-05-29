@@ -177,7 +177,7 @@ export default function Header() {
               {NAV_ITEMS.map((item, index) => (
                 <li
                   key={item.href}
-                  style={{ transitionDelay: `${(index + 1) * 0.08}s` }}
+                  style={{ transitionDelay: `${(index + 1) * 0.025}s` }}
                 >
                   <Link
                     href={item.href}

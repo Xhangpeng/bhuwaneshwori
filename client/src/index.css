@@ -169,12 +169,12 @@
     box-shadow: 0 0 18px rgba(197, 155, 39, 0.45);
   }
   .route-progress.is-running {
-    animation: route-progress-run 760ms cubic-bezier(0.23, 1, 0.32, 1) both;
+    animation: route-progress-run 360ms cubic-bezier(0.23, 1, 0.32, 1) both;
   }
   @keyframes route-progress-run {
     0% { opacity: 0; transform: scaleX(0); }
-    12% { opacity: 1; transform: scaleX(0.22); }
-    62% { opacity: 1; transform: scaleX(0.78); }
+    16% { opacity: 1; transform: scaleX(0.35); }
+    70% { opacity: 1; transform: scaleX(0.88); }
     100% { opacity: 0; transform: scaleX(1); }
   }
   h1, h2, h3, h4, h5, h6, .font-display {
@@ -438,7 +438,7 @@
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 14px rgba(10, 59, 117, 0.30);
     display: inline-flex;
     align-items: center;
@@ -454,7 +454,7 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.30), transparent);
-    transition: left 0.55s ease;
+    transition: left 0.28s ease;
   }
   .btn-cta:hover {
     background: var(--gradient-primary-hover);
@@ -469,7 +469,7 @@
   .btn-cta svg,
   .btn-gold svg,
   .btn-ghost svg {
-    transition: transform 0.28s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.18s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .btn-cta:hover svg,
   .btn-gold:hover svg,
@@ -487,7 +487,7 @@
     font-weight: 700;
     font-size: 13px;
     letter-spacing: 0.04em;
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 14px rgba(197, 155, 39, 0.35);
     display: inline-flex;
     align-items: center;
@@ -606,7 +606,7 @@
     background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,0.32) 48%, transparent 72%);
     opacity: 0;
     transform: translateX(-55%);
-    transition: opacity 0.4s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: opacity 0.2s ease, transform 0.36s cubic-bezier(0.23, 1, 0.32, 1);
     pointer-events: none;
   }
   .image-frame:hover::after {
@@ -623,7 +623,7 @@
 
   /* Zoom hover effect */
   .hover-zoom img {
-    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.38s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .hover-zoom:hover img {
     transform: scale(1.045);
@@ -631,7 +631,7 @@
 
   /* Gentle lift on hover */
   .hover-lift {
-    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+    transition: transform 0.22s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.22s ease, border-color 0.22s ease;
   }
   .hover-lift:hover {
     transform: translateY(-4px);
@@ -693,7 +693,7 @@
     border-radius: 22px;
     padding: 1.75rem 1.25rem;
     text-align: center;
-    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), background 0.35s ease, border-color 0.35s ease;
+    transition: transform 0.22s cubic-bezier(0.23, 1, 0.32, 1), background 0.22s ease, border-color 0.22s ease;
   }
   .stat-item:hover {
     transform: translateY(-6px);
@@ -767,7 +767,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.28s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .gallery-slide:hover img { transform: scale(1.06); }
   .gallery-caption {
@@ -784,7 +784,7 @@
 
   .gallery-card {
     isolation: isolate;
-    animation: gallery-card-in 0.55s cubic-bezier(0.23, 1, 0.32, 1) both;
+    animation: gallery-card-in 0.32s cubic-bezier(0.23, 1, 0.32, 1) both;
   }
 
   .gallery-image-wrap {
@@ -950,11 +950,11 @@
     position: fixed;
     inset: 0;
     background: rgba(4, 28, 56, 0.4);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(2px);
     z-index: 9998;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: opacity 0.18s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.18s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .mobile-sidebar-overlay.open {
     opacity: 1;
@@ -973,7 +973,7 @@
     background: white;
     z-index: 9999;
     box-shadow: 20px 0 40px rgba(7, 28, 56, 0.15);
-    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.22s cubic-bezier(0.23, 1, 0.32, 1);
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -1027,7 +1027,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.18s ease;
     z-index: 1;
   }
   .sidebar-close-btn:hover {
@@ -1050,7 +1050,7 @@
     margin-bottom: 0.5rem;
     opacity: 0;
     transform: translateX(-20px);
-    transition: all 0.4s ease;
+    transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .mobile-sidebar.open .sidebar-nav li {
     opacity: 1;
@@ -1073,10 +1073,10 @@
     border-radius: 10px;
     transform: translateZ(0);
     transition:
-      background 0.25s ease,
-      color 0.25s ease,
-      transform 0.22s cubic-bezier(0.23, 1, 0.32, 1),
-      box-shadow 0.25s ease;
+      background 0.18s ease,
+      color 0.18s ease,
+      transform 0.16s cubic-bezier(0.23, 1, 0.32, 1),
+      box-shadow 0.18s ease;
   }
   .sidebar-nav-link::after {
     content: "";
@@ -1094,7 +1094,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: transform 0.18s ease, color 0.18s ease;
   }
   .sidebar-nav-link:hover {
     background: rgba(10, 59, 117, 0.05);
@@ -1263,7 +1263,7 @@
       linear-gradient(135deg, rgba(255,255,255,0.22), transparent 42%);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.35s ease;
+    transition: opacity 0.22s ease;
   }
   .soft-card:hover::after,
   .feature-card:hover::after,
@@ -1364,10 +1364,10 @@
 
 /* ===== Animations ===== */
 @layer utilities {
-  .anim-fade-up   { animation: fadeUp   600ms cubic-bezier(0.23, 1, 0.32, 1) both; }
-  .anim-fade-in   { animation: fadeIn   650ms cubic-bezier(0.23, 1, 0.32, 1) both; }
-  .anim-fade-left { animation: fadeLeft 650ms cubic-bezier(0.23, 1, 0.32, 1) both; }
-  .anim-fade-right{ animation: fadeRight 650ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+  .anim-fade-up   { animation: fadeUp   320ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+  .anim-fade-in   { animation: fadeIn   320ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+  .anim-fade-left { animation: fadeLeft 320ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+  .anim-fade-right{ animation: fadeRight 320ms cubic-bezier(0.23, 1, 0.32, 1) both; }
   @keyframes fadeUp    { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeIn    { from { opacity: 0; }                                to { opacity: 1; } }
   @keyframes fadeLeft  { from { opacity: 0; transform: translateX(-18px); } to { opacity: 1; transform: translateX(0); } }
@@ -1498,7 +1498,7 @@
     background: #ffffff;
     border-radius: 22px;
     padding: 1.75rem 1.5rem;
-    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+    transition: transform 0.22s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.22s ease, border-color 0.22s ease;
     position: relative;
     border: 1px solid #eef2f6;
   }
@@ -1518,7 +1518,7 @@
     justify-content: center;
     margin-bottom: 1rem;
     box-shadow: inset 0 0 0 1px rgba(10, 59, 117, 0.08);
-    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), background 0.35s ease, color 0.35s ease;
+    transition: transform 0.22s cubic-bezier(0.23, 1, 0.32, 1), background 0.22s ease, color 0.22s ease;
   }
   .feature-card:hover .feature-icon {
     transform: translateY(-2px) rotate(-3deg) scale(1.04);
@@ -1546,7 +1546,7 @@
     overflow: hidden;
     background: #fff;
     border: 1px solid #eef2f6;
-    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
+    transition: transform 0.24s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.24s ease;
   }
   .program-card:hover {
     transform: translateY(-4px);
@@ -1560,7 +1560,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.32s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .program-card:hover .pc-img img { transform: scale(1.06); }
   .program-card .pc-body {
@@ -1647,7 +1647,7 @@
     align-items: center;
     justify-content: center;
     gap: 4px;
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
+    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.2s ease;
   }
   .notice-date > span {
     width: 100%;
@@ -1733,41 +1733,35 @@
   /* Scroll reveal elements initial states */
   .reveal {
     opacity: 0;
-    filter: blur(6px);
-    transform: translateY(22px) scale(0.985);
-    transition: opacity 0.82s cubic-bezier(0.23, 1, 0.32, 1), transform 0.82s cubic-bezier(0.23, 1, 0.32, 1), filter 0.82s ease;
+    transform: translateY(12px) scale(0.995);
+    transition: opacity 0.32s cubic-bezier(0.23, 1, 0.32, 1), transform 0.32s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .reveal-up {
     opacity: 0;
-    filter: blur(6px);
-    transform: translateY(30px) scale(0.985);
-    transition: opacity 0.88s cubic-bezier(0.23, 1, 0.32, 1), transform 0.88s cubic-bezier(0.23, 1, 0.32, 1), filter 0.88s ease;
+    transform: translateY(14px) scale(0.995);
+    transition: opacity 0.34s cubic-bezier(0.23, 1, 0.32, 1), transform 0.34s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .reveal-left {
     opacity: 0;
-    filter: blur(6px);
-    transform: translateX(-30px);
-    transition: opacity 0.88s cubic-bezier(0.23, 1, 0.32, 1), transform 0.88s cubic-bezier(0.23, 1, 0.32, 1), filter 0.88s ease;
+    transform: translateX(-14px);
+    transition: opacity 0.34s cubic-bezier(0.23, 1, 0.32, 1), transform 0.34s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .reveal-right {
     opacity: 0;
-    filter: blur(6px);
-    transform: translateX(30px);
-    transition: opacity 0.88s cubic-bezier(0.23, 1, 0.32, 1), transform 0.88s cubic-bezier(0.23, 1, 0.32, 1), filter 0.88s ease;
+    transform: translateX(14px);
+    transition: opacity 0.34s cubic-bezier(0.23, 1, 0.32, 1), transform 0.34s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .reveal-zoom {
     opacity: 0;
-    filter: blur(5px);
-    transform: scale(0.96);
-    transition: opacity 0.88s cubic-bezier(0.23, 1, 0.32, 1), transform 0.88s cubic-bezier(0.23, 1, 0.32, 1), filter 0.88s ease;
+    transform: scale(0.985);
+    transition: opacity 0.34s cubic-bezier(0.23, 1, 0.32, 1), transform 0.34s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   /* Stagger delays */
   .stagger > * {
     opacity: 0;
-    filter: blur(4px);
-    transform: translateY(16px) scale(0.99);
-    transition: opacity 0.62s cubic-bezier(0.23, 1, 0.32, 1), transform 0.62s cubic-bezier(0.23, 1, 0.32, 1), filter 0.62s ease;
+    transform: translateY(10px) scale(0.997);
+    transition: opacity 0.24s cubic-bezier(0.23, 1, 0.32, 1), transform 0.24s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   /* Triggered visible states */
@@ -1778,25 +1772,24 @@
   .reveal-zoom.is-visible {
     opacity: 1;
     transform: translate(0) scale(1);
-    filter: blur(0);
   }
 
-  .stagger.is-visible > * { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  .stagger.is-visible > * { opacity: 1; transform: translateY(0) scale(1); }
   .stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
-  .stagger.is-visible > *:nth-child(2) { transition-delay: 55ms; }
-  .stagger.is-visible > *:nth-child(3) { transition-delay: 110ms; }
-  .stagger.is-visible > *:nth-child(4) { transition-delay: 165ms; }
-  .stagger.is-visible > *:nth-child(5) { transition-delay: 220ms; }
-  .stagger.is-visible > *:nth-child(6) { transition-delay: 275ms; }
-  .stagger.is-visible > *:nth-child(7) { transition-delay: 330ms; }
-  .stagger.is-visible > *:nth-child(8) { transition-delay: 385ms; }
-  .stagger.is-visible > *:nth-child(9) { transition-delay: 440ms; }
-  .stagger.is-visible > *:nth-child(10) { transition-delay: 495ms; }
+  .stagger.is-visible > *:nth-child(2) { transition-delay: 25ms; }
+  .stagger.is-visible > *:nth-child(3) { transition-delay: 50ms; }
+  .stagger.is-visible > *:nth-child(4) { transition-delay: 75ms; }
+  .stagger.is-visible > *:nth-child(5) { transition-delay: 100ms; }
+  .stagger.is-visible > *:nth-child(6) { transition-delay: 125ms; }
+  .stagger.is-visible > *:nth-child(7) { transition-delay: 150ms; }
+  .stagger.is-visible > *:nth-child(8) { transition-delay: 175ms; }
+  .stagger.is-visible > *:nth-child(9) { transition-delay: 200ms; }
+  .stagger.is-visible > *:nth-child(10) { transition-delay: 225ms; }
 
   @media (max-width: 767px) {
     .reveal-left,
     .reveal-right {
-      transform: translateY(22px) scale(0.985);
+      transform: translateY(12px) scale(0.995);
     }
   }
 
@@ -1806,15 +1799,15 @@
     touch-action: manipulation;
   }
   .flip-card-inner {
-    transition: transform 0.78s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.38s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .flip-card-face {
     border-radius: 1rem;
     transform: translateZ(0);
     transition:
-      border-color 0.35s ease,
-      box-shadow 0.35s ease,
-      background 0.35s ease;
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background 0.2s ease;
   }
   .flip-card-front {
     background:
@@ -1831,7 +1824,7 @@
     box-shadow: 0 24px 48px -30px rgba(10, 59, 117, 0.38);
   }
   .flip-card-corner {
-    transition: transform 0.55s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.35s ease;
+    transition: transform 0.24s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.2s ease;
   }
   .flip-card-shell:hover .flip-card-corner,
   .flip-card-shell:focus-visible .flip-card-corner {
@@ -1839,7 +1832,7 @@
     transform: scale(1.16);
   }
   .flip-card-icon {
-    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s ease, background 0.35s ease;
+    transition: transform 0.22s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.22s ease, background 0.22s ease;
   }
   .flip-card-shell:hover .flip-card-icon,
   .flip-card-shell:focus-visible .flip-card-icon {
@@ -1892,7 +1885,7 @@
       rgba(255, 255, 255, 0.45) 50%,
       transparent 70%);
     transform: translateX(-120%);
-    transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.36s cubic-bezier(0.23, 1, 0.32, 1);
     pointer-events: none;
   }
   .shine:hover::after { transform: translateX(120%); }
@@ -1958,7 +1951,7 @@
     background: var(--color-gold);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.22s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .hover-underline:hover::after { transform: scaleX(1); }
 

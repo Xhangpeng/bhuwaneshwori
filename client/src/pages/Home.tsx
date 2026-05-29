@@ -78,7 +78,7 @@ export default function Home() {
                   fontSize: "clamp(2.1rem, 1.3rem + 3.6vw, 4.6rem)",
                   lineHeight: 1.06,
                   letterSpacing: "-0.01em",
-                  animationDelay: "60ms",
+                  animationDelay: "35ms",
                 }}
               >
                 Welcome to{" "}
@@ -93,7 +93,7 @@ export default function Home() {
                 style={{
                   fontFamily: "var(--font-sans)",
                   fontSize: "clamp(0.98rem, 0.88rem + 0.4vw, 1.125rem)",
-                  animationDelay: "140ms",
+                  animationDelay: "70ms",
                 }}
               >
                 Empowering students of {SCHOOL.location} with quality education,
@@ -104,7 +104,7 @@ export default function Home() {
 
               <div
                 className="mt-9 flex flex-wrap items-center justify-start gap-4 anim-fade-up"
-                style={{ animationDelay: "220ms" }}
+                style={{ animationDelay: "110ms" }}
               >
                 <button onClick={apply} className="btn-gold shine">
                   Apply Now <ArrowRight className="h-4 w-4" />
@@ -125,7 +125,7 @@ export default function Home() {
               {/* Mini Badges */}
               <div
                 className="mt-10 flex flex-wrap items-center justify-start gap-x-7 gap-y-3 text-white/75 anim-fade-up"
-                style={{ animationDelay: "300ms", fontFamily: "var(--font-sans)", fontSize: "12.5px", letterSpacing: "0.08em" }}
+                style={{ animationDelay: "150ms", fontFamily: "var(--font-sans)", fontSize: "12.5px", letterSpacing: "0.08em" }}
               >
                 <span className="inline-flex items-center gap-2 hover:text-secondary transition-colors duration-200">
                   <Award className="h-4 w-4 text-secondary" />
@@ -146,7 +146,7 @@ export default function Home() {
             <div className="lg:col-span-5">
               <div
                 className="relative anim-fade-up"
-                style={{ animationDelay: "260ms" }}
+                style={{ animationDelay: "120ms" }}
               >
                 <div className="image-frame hover-zoom pulse-gold">
                   <img

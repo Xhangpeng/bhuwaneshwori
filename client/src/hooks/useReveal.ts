@@ -17,7 +17,7 @@ export function useReveal() {
     if (typeof window === "undefined") return;
     let observer: IntersectionObserver | null = null;
 
-    // Slight delay so newly-rendered DOM is in place
+    // Tiny delay so newly-rendered DOM is in place without making page load feel slow.
     const id = window.setTimeout(() => {
       document
         .querySelectorAll<HTMLElement>("main > section:not(:first-child):not([data-no-reveal])")
@@ -62,11 +62,11 @@ export function useReveal() {
             }
           });
         },
-        { rootMargin: "0px 0px -10% 0px", threshold: 0.12 },
+        { rootMargin: "0px 0px 12% 0px", threshold: 0.01 },
       );
 
       targets.forEach((el) => observer?.observe(el));
-    }, 60);
+    }, 10);
 
     return () => {
       window.clearTimeout(id);

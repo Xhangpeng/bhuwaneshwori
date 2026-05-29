@@ -7,7 +7,7 @@ export default function RouteProgress() {
 
   useEffect(() => {
     setRunning(true);
-    const timer = window.setTimeout(() => setRunning(false), 760);
+    const timer = window.setTimeout(() => setRunning(false), 380);
     return () => window.clearTimeout(timer);
   }, [location]);
 
