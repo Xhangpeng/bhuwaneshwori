@@ -20,7 +20,7 @@ export function useReveal() {
     // Slight delay so newly-rendered DOM is in place
     const id = window.setTimeout(() => {
       document
-        .querySelectorAll<HTMLElement>("main > section:not(:first-child)")
+        .querySelectorAll<HTMLElement>("main > section:not(:first-child):not([data-no-reveal])")
         .forEach((section) => {
           if (
             !section.classList.contains("reveal") &&

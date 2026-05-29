@@ -308,7 +308,7 @@ export default function Gallery() {
       </section>
 
       {/* Gallery Main Section */}
-      <section className="container py-20 md:py-28">
+      <section className="container pt-8 pb-16 md:py-28" data-no-reveal>
         {/* Category Filters */}
         <div className="flex flex-nowrap sm:flex-wrap items-center justify-start sm:justify-center gap-2 mb-10 sm:mb-14 border-b border-slate-200/60 pb-3 overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
           {[
