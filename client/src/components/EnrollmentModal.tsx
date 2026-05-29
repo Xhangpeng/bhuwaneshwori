@@ -2,6 +2,7 @@ import { Calendar, MapPin, Phone, Send, Sparkles, X } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { SCHOOL } from "@/const";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface EnrollmentModalProps {
   isOpen: boolean;
@@ -18,6 +19,7 @@ export default function EnrollmentModal({
   onClose,
   course,
 }: EnrollmentModalProps) {
+  const { t } = useLanguage();
   const [formData, setForm] = useState({
     parentName: "",
     phone: "",
@@ -31,7 +33,7 @@ export default function EnrollmentModal({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.parentName || !formData.phone || !formData.studentName) {
-      toast.error("Please fill in all required fields.");
+      toast.error(t("Please fill in all required fields."));
       return;
     }
     setSubmitting(true);
@@ -71,16 +73,16 @@ export default function EnrollmentModal({
           <div className="space-y-2">
             <span className="eyebrow-pill text-xs bg-white/10 border-white/20 text-white">
               <Sparkles className="h-3 w-3 text-secondary animate-pulse" />
-              Admission Inquiry
+              {t("Admission Inquiry")}
             </span>
             <h2
               className="font-display font-extrabold text-2xl tracking-tight text-white mt-3"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Enroll in {course.title}
+              {t("Enroll in")} {t(course.title)}
             </h2>
             <p className="text-white/85 text-xs font-sans mt-1">
-              Target Level: {course.grades} | Code: {course.id}
+              {t("Target Level:")} {t(course.grades)} | {t("Code")}: {course.id}
             </p>
           </div>
         </div>
@@ -91,7 +93,7 @@ export default function EnrollmentModal({
             {/* Student Name */}
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 font-sans">
-                Student Name *
+                {t("Student Name *")}
               </label>
               <input
                 type="text"
@@ -109,7 +111,7 @@ export default function EnrollmentModal({
               {/* Parent Name */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 font-sans">
-                  Parent / Guardian Name *
+                {t("Parent / Guardian Name *")}
                 </label>
                 <input
                   type="text"
@@ -126,7 +128,7 @@ export default function EnrollmentModal({
               {/* Contact Phone */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 font-sans">
-                  Contact Phone *
+                {t("Contact Phone *")}
                 </label>
                 <input
                   type="tel"
@@ -144,7 +146,7 @@ export default function EnrollmentModal({
             {/* Notes */}
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 font-sans">
-                Additional Notes / Queries
+                {t("Additional Notes / Queries")}
               </label>
               <textarea
                 rows={3}
@@ -163,10 +165,10 @@ export default function EnrollmentModal({
               className="btn-gold shine w-full justify-center py-3.5 text-xs font-bold rounded-xl mt-4"
             >
               {submitting ? (
-                "Submitting Application..."
+                t("Submitting Application...")
               ) : (
                 <>
-                  Submit Enrollment Inquiry <Send className="h-4 w-4" />
+                  {t("Submit Enrollment Inquiry")} <Send className="h-4 w-4" />
                 </>
               )}
             </button>
@@ -177,7 +179,7 @@ export default function EnrollmentModal({
             <div className="bg-white p-4 rounded-xl border border-slate-100 flex items-center gap-3">
               <Phone className="h-4 w-4 text-secondary" />
               <div>
-                <span className="block text-[9px] text-slate-400 font-bold uppercase">Call Admissions</span>
+                <span className="block text-[9px] text-slate-400 font-bold uppercase">{t("Call Admissions")}</span>
                 <a href={`tel:${SCHOOL.contact.replace(/\s/g, "")}`} className="text-primary font-bold hover:underline">
                   {SCHOOL.contact}
                 </a>
@@ -186,8 +188,8 @@ export default function EnrollmentModal({
             <div className="bg-white p-4 rounded-xl border border-slate-100 flex items-center gap-3">
               <MapPin className="h-4 w-4 text-secondary" />
               <div>
-                <span className="block text-[9px] text-slate-400 font-bold uppercase">Campus Visit</span>
-                <span className="text-primary font-bold">Bedkot-6, Kanchanpur</span>
+                <span className="block text-[9px] text-slate-400 font-bold uppercase">{t("Campus Visit")}</span>
+                <span className="text-primary font-bold">{t("Bedkot-6, Kanchanpur")}</span>
               </div>
             </div>
           </div>

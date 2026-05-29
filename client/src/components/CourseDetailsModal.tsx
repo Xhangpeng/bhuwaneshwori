@@ -9,6 +9,7 @@ import {
   X,
 } from "lucide-react";
 import { SCHOOL } from "@/const";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface CourseDetailsModalProps {
   isOpen: boolean;
@@ -32,6 +33,8 @@ export default function CourseDetailsModal({
   onClose,
   course,
 }: CourseDetailsModalProps) {
+  const { t } = useLanguage();
+
   if (!isOpen || !course) return null;
 
   return (
@@ -61,16 +64,16 @@ export default function CourseDetailsModal({
           <div className="space-y-2">
             <span className="eyebrow-pill text-xs bg-white/10 border-white/20 text-white">
               <Sparkles className="h-3 w-3 text-secondary animate-pulse" />
-              Course Details
+              {t("Course Details")}
             </span>
             <h2
               className="font-display font-extrabold text-2xl tracking-tight text-white mt-3"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              {course.title}
+              {t(course.title)}
             </h2>
             <p className="text-white/80 text-xs font-sans mt-1">
-              Code: {course.id} | Target Age: {course.age} | {course.grades}
+              {t("Code")}: {course.id} | {t("Target Age:")} {t(course.age)} | {t(course.grades)}
             </p>
           </div>
         </div>
@@ -80,10 +83,10 @@ export default function CourseDetailsModal({
           {/* Description */}
           <div className="space-y-2.5">
             <h3 className="font-display font-bold text-base text-primary">
-              Program Overview
+              {t("Program Overview")}
             </h3>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed font-sans">
-              {course.desc}
+              {t(course.desc)}
             </p>
           </div>
 
@@ -91,7 +94,7 @@ export default function CourseDetailsModal({
           <div className="space-y-2.5">
             <h3 className="font-display font-bold text-base text-primary flex items-center gap-2">
               <Layers className="h-4 w-4 text-secondary" />
-              Curriculum Subject Matrix
+              {t("Curriculum Subject Matrix")}
             </h3>
             <div className="grid sm:grid-cols-2 gap-2.5 text-xs text-slate-600 font-sans">
               {course.subjects.map((s) => (
@@ -100,7 +103,7 @@ export default function CourseDetailsModal({
                   className="flex items-center gap-2 bg-white p-3 rounded-xl border border-slate-100 shadow-sm"
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-secondary shrink-0" />
-                  {s}
+                  {t(s)}
                 </div>
               ))}
             </div>
@@ -112,7 +115,7 @@ export default function CourseDetailsModal({
             <div className="space-y-2.5">
               <h4 className="font-display font-bold text-sm text-primary flex items-center gap-2">
                 <FileText className="h-4 w-4 text-secondary" />
-                Required Documents
+                {t("Required Documents")}
               </h4>
               <ul className="space-y-2 text-[11px] text-slate-500 font-sans">
                 <li className="flex items-start gap-2">

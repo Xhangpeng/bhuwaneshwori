@@ -16,6 +16,7 @@ import { Link } from "wouter";
 import { useState } from "react";
 import CourseDetailsModal from "@/components/CourseDetailsModal";
 import EnrollmentModal from "@/components/EnrollmentModal";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type CourseLevel = "all" | "early" | "primary" | "lower_sec" | "secondary" | "higher_sec";
 
@@ -36,6 +37,7 @@ interface CourseItem {
 
 export default function Courses() {
   const [filter, setFilter] = useState<CourseLevel>("all");
+  const { t } = useLanguage();
   
   // Modal State Management
   const [selectedCourse, setSelectedCourse] = useState<CourseItem | null>(null);
@@ -75,10 +77,10 @@ export default function Courses() {
       image: ASSETS.classroom,
       desc: "We provide a highly supportive and engaging environment to primary level students. Our focus is on establishing strong literacy in Nepali and English, core mathematics, environmental curiosity, and moral values that guide everyday behavior.",
       subjects: [
-        "Nepali (नेपाली) & English (अंग्रेजी)",
-        "Compulsory Mathematics (गणित)",
-        "Science & Environmental Studies (विज्ञान)",
-        "Social Studies & Local Environment (सामाजिक)",
+        "Nepali & English Languages",
+        "Compulsory Mathematics",
+        "Science & Environmental Studies",
+        "Social Studies & Local Environment",
         "Creative Arts, Crafts & Physical Ed.",
       ],
       focus: "Reading, Writing, Core Math, Basic Science",
@@ -193,7 +195,7 @@ export default function Courses() {
         <div className="container relative z-10 py-20 sm:py-24 md:py-32 lg:py-36 text-center">
           <span className="eyebrow-pill">
             <Sparkles className="h-3 w-3 text-secondary animate-pulse" />
-            Academic Offerings
+            {t("Academic Offerings")}
           </span>
           <h1
             className="text-white mt-6 anim-fade-up font-display font-extrabold"
@@ -204,7 +206,7 @@ export default function Courses() {
               animationDelay: "80ms",
             }}
           >
-            Our <span className="text-shimmer" style={{ backgroundSize: "200% 100%" }}>Courses</span>
+            {t("Our Courses")}
           </h1>
           <p
             className="mx-auto mt-6 max-w-2xl text-white/85 anim-fade-up"
@@ -215,8 +217,7 @@ export default function Courses() {
               animationDelay: "160ms",
             }}
           >
-            Explore our comprehensive educational pathways, spanning from early childhood nurturing
-            to high school board programs. Fully responsive, highly structured, and designed for growth.
+            {t("Explore our comprehensive educational pathways, spanning from early childhood nurturing to high school board programs. Fully responsive, highly structured, and designed for growth.")}
           </p>
         </div>
 
@@ -235,8 +236,8 @@ export default function Courses() {
       {/* Course List & Filters */}
       <section className="container py-20 md:py-28">
         <div className="text-center max-w-2xl mx-auto mb-14 reveal">
-          <span className="eyebrow-pill">Academic Programs</span>
-          <h2 className="section-title mt-5">Educational Pathways</h2>
+          <span className="eyebrow-pill">{t("Academic Programs")}</span>
+          <h2 className="section-title mt-5">{t("Educational Pathways")}</h2>
           <p
             className="mt-5 mx-auto"
             style={{
@@ -247,8 +248,7 @@ export default function Courses() {
               maxWidth: "60ch",
             }}
           >
-            Filter by academic levels to explore our structured curriculum, core subject matrices,
-            and specialized focus areas. Click on any course to view full details and enrollment criteria.
+            {t("Filter by academic levels to explore our structured curriculum, core subject matrices, and specialized focus areas. Click on any course to view full details and enrollment criteria.")}
           </p>
         </div>
 
@@ -269,17 +269,17 @@ export default function Courses() {
               className="subtab"
             >
               <span className="subtab-dot" />
-              {tab.label}
+              {t(tab.label)}
             </button>
           ))}
         </div>
 
         {/* Course Cards Grid */}
-        <div className="space-y-12 md:space-y-20">
+        <div className="space-y-8 md:space-y-12">
           {filteredCourses.map((c, idx) => (
             <div
               key={c.id}
-              className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center reveal ${
+              className={`course-curriculum-card grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-12 items-center reveal ${
                 idx % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
             >
@@ -302,8 +302,8 @@ export default function Courses() {
                     className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 px-3 sm:px-4 py-2 sm:py-3 rounded-xl sm:rounded-2xl text-white font-bold text-[10px] sm:text-xs shadow-lg flex flex-col items-center justify-center"
                     style={{ background: "var(--gradient-gold)" }}
                   >
-                    <span className="opacity-75 uppercase tracking-widest text-[8px] sm:text-[9px]">Capacity</span>
-                    <span className="text-xs sm:text-sm font-extrabold mt-0.5">{c.maxStudents}</span>
+                    <span className="opacity-75 uppercase tracking-widest text-[8px] sm:text-[9px]">{t("Capacity")}</span>
+                    <span className="text-xs sm:text-sm font-extrabold mt-0.5">{t(c.maxStudents)}</span>
                   </div>
                 </div>
               </div>
@@ -320,10 +320,10 @@ export default function Courses() {
                   </div>
                   <div>
                     <span className="text-[10px] uppercase tracking-widest font-bold text-secondary font-sans block">
-                      Code {c.id} · {c.levelName}
+                      {t("Code")} {c.id} · {t(c.levelName)}
                     </span>
                     <span className="text-xs text-slate-400 font-sans block mt-0.5">
-                      Target Age: {c.age} Years | {c.grades}
+                      {t("Target Age:")} {t(c.age)} | {t(c.grades)}
                     </span>
                   </div>
                 </div>
@@ -337,52 +337,52 @@ export default function Courses() {
                   }}
                   onClick={() => handleOpenDetails(c)}
                 >
-                  {c.title}
+                  {t(c.title)}
                 </h3>
 
                 <p
                   className="text-slate-600 leading-relaxed text-[15px]"
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
-                  {c.desc}
+                  {t(c.desc)}
                 </p>
 
                 {/* Subject Matrices & Focus Grid */}
-                <div className="grid sm:grid-cols-2 gap-6 pt-4 border-t border-slate-200/60">
+                <div className="course-detail-grid grid sm:grid-cols-2 gap-4 pt-5 border-t border-slate-200/70">
                   {/* Subject List */}
-                  <div>
+                  <div className="course-info-panel">
                     <h4
                       className="text-xs font-bold uppercase tracking-wider text-primary font-sans flex items-center gap-1.5"
                     >
                       <BookOpen className="h-3.5 w-3.5 text-secondary" />
-                      Core Subject Matrix
+                      {t("Core Subject Matrix")}
                     </h4>
-                    <ul className="mt-3 space-y-2 text-xs text-slate-500 font-sans">
+                    <ul className="mt-4 space-y-2.5 text-xs text-slate-600 font-sans">
                       {c.subjects.slice(0, 4).map((s) => (
-                        <li key={s} className="flex items-center gap-2">
+                        <li key={s} className="course-subject-row">
                           <span className="h-1.5 w-1.5 rounded-full bg-secondary shrink-0" />
-                          {s}
+                          {t(s)}
                         </li>
                       ))}
                       {c.subjects.length > 4 && (
                         <li className="text-secondary font-bold pl-3.5 mt-1 cursor-pointer hover:underline" onClick={() => handleOpenDetails(c)}>
-                          + {c.subjects.length - 4} more subjects
+                          + {c.subjects.length - 4} {t("more subjects")}
                         </li>
                       )}
                     </ul>
                   </div>
 
                   {/* Core Focus Area */}
-                  <div className="space-y-4">
+                  <div className="course-info-panel space-y-4">
                     <div>
                       <h4
                         className="text-xs font-bold uppercase tracking-wider text-primary font-sans flex items-center gap-1.5"
                       >
                         <Compass className="h-3.5 w-3.5 text-secondary animate-spin-slow" />
-                        Core Focus Area
+                        {t("Core Focus Area")}
                       </h4>
                       <p className="mt-2.5 text-xs text-slate-500 font-sans leading-relaxed">
-                        {c.focus}
+                        {t(c.focus)}
                       </p>
                     </div>
 
@@ -392,13 +392,13 @@ export default function Courses() {
                         onClick={() => handleOpenEnroll(c)}
                         className="btn-gold shine text-xs px-4 py-2.5 rounded-lg"
                       >
-                        Enroll Now
+                        {t("Enroll Now")}
                       </button>
                       <button
                         onClick={() => handleOpenDetails(c)}
                         className="btn-ghost text-xs px-4 py-2.5 rounded-lg border border-slate-200 hover:border-primary"
                       >
-                        View Details
+                        {t("View Details")}
                       </button>
                     </div>
                   </div>
@@ -421,7 +421,7 @@ export default function Courses() {
                 borderColor: "rgba(255,255,255,0.18)",
               }}
             >
-              Curriculum Development Centre (CDC) Standards
+              {t("Curriculum Development Centre (CDC) Standards")}
             </span>
             <h2
               className="text-white mt-5"
@@ -433,20 +433,18 @@ export default function Courses() {
                 letterSpacing: "-0.01em",
               }}
             >
-              Aligned with National Education Standards
+              {t("Aligned with National Education Standards")}
             </h2>
             <p
               className="mt-4 text-white/85 max-w-2xl"
               style={{ fontFamily: "var(--font-sans)", fontSize: "1.0625rem", lineHeight: 1.65 }}
             >
-              Every level of our academic programs strictly follows the curriculum matrices set by the
-              Ministry of Education, Nepal. We combine this standard with custom practical labs, IT exposure,
-              and physical sports to ensure all-round student growth.
+              {t("Every level of our academic programs strictly follows the curriculum matrices set by the Ministry of Education, Nepal. We combine this standard with custom practical labs, IT exposure, and physical sports to ensure all-round student growth.")}
             </p>
           </div>
           <div className="md:col-span-4 flex flex-wrap md:justify-end items-center gap-3">
             <Link href="/contact" className="btn-gold shine">
-              Contact Admissions <ArrowRight className="h-4 w-4" />
+              {t("Contact Admissions")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
