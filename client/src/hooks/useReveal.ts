@@ -48,6 +48,11 @@ export function useReveal() {
         return;
       }
 
+      if (!("IntersectionObserver" in window)) {
+        targets.forEach((el) => el.classList.add("is-visible"));
+        return;
+      }
+
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {

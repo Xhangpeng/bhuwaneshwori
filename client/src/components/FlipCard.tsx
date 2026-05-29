@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type KeyboardEvent } from "react";
 import { ChevronRight } from "lucide-react";
 
 interface FlipCardProps {
@@ -20,10 +20,20 @@ export default function FlipCard({
 }: FlipCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
+  const toggleFlip = () => setIsFlipped((value) => !value);
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleFlip();
+    }
+  };
+
   return (
     <div
-      className="w-full h-[260px] sm:h-[320px] perspective-1000 cursor-pointer group"
-      onClick={() => setIsFlipped(!isFlipped)}
+      className="flip-card-shell w-full h-[230px] sm:h-[300px] lg:h-[320px] perspective-1000 cursor-pointer group"
+      onClick={toggleFlip}
+      onKeyDown={handleKeyDown}
       onMouseEnter={() => {
         if (window.matchMedia("(hover: hover)").matches) {
           setIsFlipped(true);
@@ -34,20 +44,24 @@ export default function FlipCard({
           setIsFlipped(false);
         }
       }}
+      role="button"
+      tabIndex={0}
+      aria-pressed={isFlipped}
+      aria-label={`${title} details`}
     >
       <div
-        className={`w-full h-full duration-700 preserve-3d relative transition-transform ${
+        className={`flip-card-inner w-full h-full preserve-3d relative ${
           isFlipped ? "rotate-y-180" : ""
         }`}
       >
         {/* Front Side */}
-        <div className="absolute inset-0 w-full h-full backface-hidden rounded-xl border border-border shadow-md bg-card p-5 sm:p-6 flex flex-col justify-between overflow-hidden">
+        <div className="flip-card-face flip-card-front absolute inset-0 w-full h-full backface-hidden rounded-2xl border border-border shadow-md bg-card p-5 sm:p-6 flex flex-col justify-between overflow-hidden">
           {/* Decorative Gold Corner */}
-          <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-transparent to-secondary/10 rounded-bl-full pointer-events-none" />
+          <div className="flip-card-corner absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-transparent to-secondary/10 rounded-bl-full pointer-events-none" />
           
           <div className="flex flex-col gap-3 sm:gap-4">
             <div className="flex items-center justify-between">
-              <div className="bg-primary/5 text-secondary p-2.5 sm:p-3 rounded-lg shadow-sm border border-secondary/10">
+              <div className="flip-card-icon bg-primary/5 text-secondary p-2.5 sm:p-3 rounded-lg shadow-sm border border-secondary/10">
                 {icon}
               </div>
               <span className="text-[10px] font-sans tracking-widest uppercase font-bold text-secondary">
@@ -62,14 +76,14 @@ export default function FlipCard({
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs font-semibold text-secondary group-hover:gap-2.5 transition-all">
+          <div className="flip-card-action flex items-center gap-1.5 text-xs font-semibold text-secondary group-hover:gap-2.5 transition-all">
             <span>Explore Details</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </div>
         </div>
 
         {/* Back Side */}
-        <div className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-xl shadow-lg p-5 sm:p-6 flex flex-col justify-between overflow-hidden ${colorClass}`}>
+        <div className={`flip-card-face flip-card-back absolute inset-0 w-full h-full backface-hidden shadow-lg p-5 sm:p-6 flex flex-col justify-between overflow-hidden ${colorClass}`}>
           {/* Mandala-inspired abstract background watermark */}
           <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/5 rounded-full pointer-events-none border border-white/10" />
           
