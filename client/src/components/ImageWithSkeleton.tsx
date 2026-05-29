@@ -32,7 +32,9 @@ export default function ImageWithSkeleton({
         src={src}
         alt={alt}
         loading="lazy"
+        decoding="async"
         onLoad={() => setIsLoaded(true)}
+        onError={() => setIsLoaded(true)}
         className={`${className} transition-opacity duration-500 ease-in-out ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}

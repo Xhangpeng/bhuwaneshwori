@@ -4,6 +4,8 @@ import { toast } from "sonner";
 declare global {
   interface Window {
     __pwaDeferredPrompt?: BeforeInstallPromptEvent | null;
+    __pwaInstallPromptActive?: boolean;
+    __pwaInstallToastShown?: boolean;
   }
 }
 
@@ -19,6 +21,12 @@ interface BeforeInstallPromptEvent extends Event {
 const isStandalone = () =>
   window.matchMedia("(display-mode: standalone)").matches ||
   (navigator as any).standalone === true;
+
+const showInstalledToastOnce = () => {
+  if (window.__pwaInstallToastShown) return;
+  window.__pwaInstallToastShown = true;
+  toast.success("School app installed successfully.");
+};
 
 export function usePWAInstall() {
   const [deferredPrompt, setDeferredPrompt] =
@@ -45,8 +53,9 @@ export function usePWAInstall() {
     const handleAppInstalled = () => {
       setIsInstalled(true);
       window.__pwaDeferredPrompt = null;
+      window.__pwaInstallPromptActive = false;
       setDeferredPrompt(null);
-      toast.success("School app installed successfully.");
+      showInstalledToastOnce();
     };
 
     const handlePWAReady = (event: Event) => {
@@ -73,30 +82,39 @@ export function usePWAInstall() {
   const promptInstall = async () => {
     if (isInstalled || isStandalone()) {
       setIsInstalled(true);
-      toast.success("School app is already installed.");
+      showInstalledToastOnce();
       return;
     }
 
-    if (!deferredPrompt) {
+    if (window.__pwaInstallPromptActive) {
+      return;
+    }
+
+    const promptEvent = window.__pwaDeferredPrompt || deferredPrompt;
+
+    if (!promptEvent) {
       toast.info("Install prompt is not ready yet. Please try again in Chrome after the page finishes loading.");
       return;
     }
 
     try {
-      await deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
+      window.__pwaInstallPromptActive = true;
+      await promptEvent.prompt();
+      const { outcome } = await promptEvent.userChoice;
 
       if (outcome === "accepted") {
         setIsInstalled(true);
         window.__pwaDeferredPrompt = null;
-        toast.success("Thank you for installing our school app.");
       }
 
       window.__pwaDeferredPrompt = null;
       setDeferredPrompt(null);
     } catch (error) {
       console.error("PWA install prompt failed:", error);
-      toast.error("Could not open the Chrome install prompt. Please refresh and try again.");
+      window.__pwaDeferredPrompt = null;
+      setDeferredPrompt(null);
+    } finally {
+      window.__pwaInstallPromptActive = false;
     }
   };
 

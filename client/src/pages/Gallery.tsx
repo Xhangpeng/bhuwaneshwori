@@ -336,7 +336,8 @@ export default function Gallery() {
           {filteredItems.map((item, index) => (
             <div
               key={item.id}
-              className="group relative bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl hover-lift transition-all duration-300 cursor-pointer reveal"
+              className="gallery-card group relative bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl hover-lift transition-all duration-300 cursor-pointer"
+              style={{ animationDelay: `${Math.min(index, 8) * 45}ms` }}
               onClick={() => setLightboxIndex(index)}
             >
               {/* Image Container with Shimmer Skeleton */}
